@@ -18,7 +18,8 @@ class ParsekEventHandler : ParsekEventListener {
             MailPlugin.INSTANCE,
             MailConfig::class.java,
             logger,
-            listOf(ConfigMigration1to2())
+            listOf(ConfigMigration1to2()),
+            listOf("mail")
         )
 
         logger.info("Initialized plugin config")

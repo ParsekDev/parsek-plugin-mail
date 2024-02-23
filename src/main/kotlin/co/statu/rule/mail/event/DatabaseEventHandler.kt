@@ -8,5 +8,6 @@ class DatabaseEventHandler : DatabaseEventListener {
 
     override suspend fun onReady(databaseManager: DatabaseManager) {
         MailPlugin.databaseManager = databaseManager
+        databaseManager.migrateNewPluginId("mail", MailPlugin.INSTANCE.context.pluginId, MailPlugin.INSTANCE)
     }
 }
