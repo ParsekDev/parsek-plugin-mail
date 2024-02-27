@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.internal.KaptTask
-
 plugins {
     kotlin("jvm") version "1.9.20"
     kotlin("kapt") version "1.9.20"
@@ -46,10 +44,6 @@ dependencies {
     implementation("io.vertx:vertx-web-templ-handlebars:$vertxVersion")
 }
 
-tasks.named("jar").configure {
-    enabled = false
-}
-
 tasks {
     shadowJar {
         val pluginId: String by project
@@ -84,16 +78,10 @@ tasks {
         }
     }
 
-    build {
+    jar {
+        enabled = false
         dependsOn(shadowJar)
         dependsOn("copyJar")
-    }
-}
-
-tasks.withType<KaptTask> {
-    if (bootstrap) {
-        mustRunAfter(":plugins:parsek-plugin-database:shadowJar")
-        mustRunAfter(":plugins:parsek-plugin-token:shadowJar")
     }
 }
 
