@@ -13,7 +13,8 @@ class MailManager(
     private val templateEngine: HandlebarsTemplateEngine,
     private val mailClientProvider: MailClientProvider,
     private val databaseManager: DatabaseManager,
-    private val tokenProvider: TokenProvider
+    private val tokenProvider: TokenProvider,
+    private val mailPlugin: MailPlugin
 ) {
     private val mailClient by lazy {
         mailClientProvider.provide()
@@ -38,10 +39,8 @@ class MailManager(
             tokenProvider
         )
 
-        val mailPlugin = MailPlugin.INSTANCE
-        val context = mailPlugin.context
-        val environmentType = context.environmentType
-        val stage = context.releaseStage
+        val environmentType = mailPlugin.environmentType
+        val stage = mailPlugin.releaseStage
 
         parameters.put("ENVIRONMENT", environmentType)
         parameters.put("STAGE", stage)

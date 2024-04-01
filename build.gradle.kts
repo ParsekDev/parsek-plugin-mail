@@ -11,6 +11,7 @@ version =
 
 val pf4jVersion: String by project
 val vertxVersion: String by project
+val springContextVersion: String by project
 val handlebarsVersion: String by project
 val bootstrap = (project.findProperty("bootstrap") as String?)?.toBoolean() ?: false
 val pluginsDir: File? by rootProject.extra
@@ -26,9 +27,9 @@ dependencies {
         compileOnly(project(mapOf("path" to ":plugins:parsek-plugin-database")))
         compileOnly(project(mapOf("path" to ":plugins:parsek-plugin-token")))
     } else {
-        compileOnly("com.github.StatuParsek:Parsek:main-SNAPSHOT")
-        compileOnly("com.github.StatuParsek:parsek-plugin-database:main-SNAPSHOT")
-        compileOnly("com.github.StatuParsek:parsek-plugin-token:main-SNAPSHOT")
+        compileOnly("com.github.StatuParsek:Parsek:beta-SNAPSHOT")
+        compileOnly("com.github.StatuParsek:parsek-plugin-database:dev-SNAPSHOT")
+        compileOnly("com.github.StatuParsek:parsek-plugin-token:dev-SNAPSHOT")
     }
 
     compileOnly(kotlin("stdlib-jdk8"))
@@ -42,6 +43,9 @@ dependencies {
 
     implementation("io.vertx:vertx-mail-client:$vertxVersion")
     implementation("io.vertx:vertx-web-templ-handlebars:$vertxVersion")
+
+    // https://mvnrepository.com/artifact/org.springframework/spring-context
+    compileOnly("org.springframework:spring-context:$springContextVersion")
 }
 
 tasks {
