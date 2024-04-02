@@ -55,6 +55,8 @@ class CoreEventHandler(
             mailPlugin
         )
 
+        mailPlugin.registerSingletonGlobal(mailManager)
+
         val handlers = PluginEventManager.getEventListeners<MailEventListener>()
 
         handlers.forEach {
