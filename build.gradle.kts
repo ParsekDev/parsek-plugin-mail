@@ -27,7 +27,7 @@ dependencies {
         compileOnly(project(mapOf("path" to ":plugins:parsek-plugin-database")))
         compileOnly(project(mapOf("path" to ":plugins:parsek-plugin-token")))
     } else {
-        compileOnly("com.github.StatuParsek:Parsek:main-SNAPSHOT")
+        compileOnly("com.github.StatuParsek:Parsek:2.1.0")
         compileOnly("com.github.StatuParsek:parsek-plugin-database:main-SNAPSHOT")
         compileOnly("com.github.StatuParsek:parsek-plugin-token:main-SNAPSHOT")
     }
