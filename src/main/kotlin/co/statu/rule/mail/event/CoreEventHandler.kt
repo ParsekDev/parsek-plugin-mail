@@ -10,7 +10,6 @@ import co.statu.rule.mail.MailClientProvider
 import co.statu.rule.mail.MailConfig
 import co.statu.rule.mail.MailManager
 import co.statu.rule.mail.MailPlugin
-import co.statu.rule.mail.config.migration.ConfigMigration1to2
 import co.statu.rule.token.provider.TokenProvider
 import io.vertx.core.Vertx
 import io.vertx.ext.web.templ.handlebars.HandlebarsTemplateEngine
@@ -32,11 +31,8 @@ class CoreEventHandler(
 
     override suspend fun onConfigManagerReady(configManager: ConfigManager) {
         val pluginConfigManager = PluginConfigManager(
-            configManager,
             mailPlugin,
             MailConfig::class.java,
-            listOf(ConfigMigration1to2()),
-            listOf("mail")
         )
 
         MailPlugin.pluginConfigManager = pluginConfigManager
