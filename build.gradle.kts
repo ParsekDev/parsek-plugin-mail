@@ -97,28 +97,6 @@ tasks {
     }
 }
 
-publishing {
-    repositories {
-        maven {
-            name = "parsek-plugin-mail"
-            url = uri("https://maven.pkg.github.com/StatuParsek/parsek-plugin-mail")
-            credentials {
-                username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME_GITHUB")
-                password = project.findProperty("gpr.token") as String? ?: System.getenv("TOKEN_GITHUB")
-            }
-        }
-    }
-
-    publications {
-        create<MavenPublication>("shadow") {
-            project.extensions.configure<com.github.jengelman.gradle.plugins.shadow.ShadowExtension> {
-                artifactId = "parsek-plugin-mail"
-                component(this@create)
-            }
-        }
-    }
-}
-
 java {
     // Use Java 21 for compilation
     toolchain {
