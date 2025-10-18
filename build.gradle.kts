@@ -168,7 +168,7 @@ publishing {
     publications {
         create<MavenPublication>("maven") {
             groupId = "dev.parsek"
-            artifactId = "parsek-plugin-token"
+            artifactId = "parsek-plugin-mail"
             version = project.version.toString()
 
             // Use the standard jar task output
@@ -177,9 +177,9 @@ publishing {
             artifact(tasks.named("javadocJar"))
 
             pom {
-                name.set("Parsek Token Plugin")
-                description.set("Create and manage tokens for authentication in Parsek")
-                url.set("https://github.com/ParsekDev/parsek-plugin-token")
+                name.set("Parsek Mail Plugin")
+                description.set("Mail system for Parsek")
+                url.set("https://github.com/ParsekDev/parsek-plugin-mail")
                 inceptionYear.set("2025")
 
                 licenses {
@@ -198,9 +198,9 @@ publishing {
                 }
 
                 scm {
-                    connection.set("scm:git:git://github.com/ParsekDev/parsek-plugin-token.git")
-                    developerConnection.set("scm:git:ssh://github.com/ParsekDev/parsek-plugin-token.git")
-                    url.set("https://github.com/ParsekDev/parsek-plugin-token")
+                    connection.set("scm:git:git://github.com/ParsekDev/parsek-plugin-mail.git")
+                    developerConnection.set("scm:git:ssh://github.com/ParsekDev/parsek-plugin-mail.git")
+                    url.set("https://github.com/ParsekDev/parsek-plugin-mail")
                 }
             }
         }
@@ -227,12 +227,12 @@ signing {
 // JReleaser configuration
 jreleaser {
     project {
-        name.set("parsek-plugin-token")
-        description.set("Create and manage tokens for authentication in Parsek")
+        name.set("parsek-plugin-mail")
+        description.set("Mail system for Parsek")
         authors.add("Statu")
         license.set("MIT")
         links {
-            homepage.set("https://github.com/ParsekDev/parsek-plugin-token")
+            homepage.set("https://github.com/ParsekDev/parsek-plugin-mail")
         }
         inceptionYear.set("2025")
     }
