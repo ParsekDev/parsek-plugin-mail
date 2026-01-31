@@ -4,6 +4,7 @@ import co.statu.rule.database.DatabaseManager
 import co.statu.rule.token.provider.TokenProvider
 import io.vertx.core.json.JsonObject
 import io.vertx.jdbcclient.JDBCPool
+import io.vertx.sqlclient.Pool
 import java.util.*
 
 interface Mail {
@@ -18,7 +19,7 @@ interface Mail {
         userId: UUID,
         uiAddress: String,
         databaseManager: DatabaseManager,
-        jdbcPool: JDBCPool,
+        jdbcPool: Pool,
         tokenProvider: TokenProvider
     ): JsonObject
 }

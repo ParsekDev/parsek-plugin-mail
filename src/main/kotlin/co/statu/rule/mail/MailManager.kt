@@ -5,7 +5,7 @@ import co.statu.rule.database.DatabaseManager
 import co.statu.rule.token.provider.TokenProvider
 import io.vertx.ext.mail.MailMessage
 import io.vertx.ext.web.templ.handlebars.HandlebarsTemplateEngine
-import io.vertx.kotlin.coroutines.await
+import io.vertx.kotlin.coroutines.*
 import java.util.*
 
 class MailManager(
@@ -48,8 +48,8 @@ class MailManager(
 
         message.html = templateEngine.render(
             parameters, emailConfig.templateFilePrefix + mail.templatePath
-        ).await().toString()
+        ).coAwait().toString()
 
-        mailClient.sendMail(message).await()
+        mailClient.sendMail(message).coAwait()
     }
 }
